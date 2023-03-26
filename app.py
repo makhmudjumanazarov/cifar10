@@ -6,12 +6,16 @@ import cv2
 from PIL import Image
 from svgpathtools import parse_path
 from pathlib import Path
+from glob import glob
+from random import randint
 from tensorflow.keras.models import load_model
+
 
 model_load = load_model('model')
 
 st.title('CIFAR10 Image Recognizer')
 labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
+
 
 img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 if img_file_buffer is not None:
