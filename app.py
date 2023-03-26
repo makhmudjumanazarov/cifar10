@@ -27,7 +27,7 @@ if st.button('Predict'):
         val = model_load.predict(img_array)
 #         st.write(f'result: {labels[np.argmax(val[0])]}')
         output_text = labels[np.argmax(val[0])]
-        font_size = "36px"
+        font_size = "24px"
         st.markdown("<h4 style='text-align: left; color: black; font-size: {};'>{}</h4>".format(font_size, output_text), unsafe_allow_html=True)
     except:
         pass
