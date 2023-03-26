@@ -21,7 +21,7 @@ def get_predictions_load(X_test):
 
 model_load = load_model('model')
 
-st.title('MNIST Digit Recognizer')
+st.title('CIFAR10 Image Recognizer')
 genre = st.radio(
     "choose one of the two",
 ('Draw by hand', 'Upload image'))
@@ -42,7 +42,7 @@ if genre == 'Draw by hand':
         key='canvas')
 
     if canvas_result.image_data is not None:
-        img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+        img = cv2.resize(canvas_result.image_data.astype('uint8'), (32, 32))
         rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
 #         st.image(rescaled)
 else:
@@ -54,13 +54,13 @@ else:
 if st.button('Predict'):
     try:
         test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        prediction = model_load.predict(fe_data(test_x).reshape(1, 28, 28))    
-        predictions = np.argmax(prediction, axis=1)
+#         prediction = model_load.predict(fe_data(test_x).reshape(1, 32, 32))    
+#         predictions = np.argmax(prediction, axis=1)
 #         st.bar_chart(prediction[0])
-#         st.title(predictions[0])
-        output_text = predictions[0]
-        font_size = "36px"
-        st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
+#         output_text = predictions[0]
+          st.write(text_x)
+#         font_size = "36px"
+#         st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
     except:
         pass
     try:
