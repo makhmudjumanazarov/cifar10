@@ -10,7 +10,7 @@ from glob import glob
 from tensorflow.keras.models import load_model
 
 def get_images(data, clas):
-    return [cv2.imread(i) for i in glob('images/'+data+'/'+clas+'*')]
+    return [cv2.imread(i) for i in glob('images/'+clas+'*')]
 
 model_load = load_model('model')
 
