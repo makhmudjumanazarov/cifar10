@@ -26,14 +26,14 @@ python -m ipykernel install --user --name=cifar10
 <br/>
 <b>Step 5.</b> Model to Train and Evaluate
 <pre>
-Open a mnist.ipynb file via jupyter lab or jupyter notebook commands
+Open a cifar10.ipynb file via jupyter lab or jupyter notebook commands
 </pre> 
 <br/>
 
 
 
-# MNIST - Streamlit - Drawable Canvas - Demo
+# CIFAR10 - Streamlit - Demo
 
-MNIST via Streamlit Drawable Canvas demo on Streamlit Sharing
+CIFAR10 via Streamlit 
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/makhmudjumanazarov/cifar10/main/app.py)
