@@ -22,56 +22,29 @@ def get_predictions_load(X_test):
 model_load = load_model('model')
 
 st.title('CIFAR10 Image Recognizer')
-genre = st.radio(
-    "choose one of the two",
-('Draw by hand', 'Upload image'))
+labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
+st.header(":white[Sample images for classes]")
 
-if genre == 'Draw by hand':
-    st.markdown('''
-    Try to write a digit!
-    ''')
-    SIZE = 192
-    canvas_result = st_canvas(
-        fill_color='#000000',
-        stroke_width=10,
-        stroke_color='#FFFFFF',
-        background_color='#000000',
-        width=SIZE,
-        height=SIZE,
-        drawing_mode="freedraw",
-        key='canvas')
+# clas = st.radio(
+# "Choose class",
+# classes, horizontal=True)
+# images = get_images(option, clas)
+# rand = randint(0, 9)
+# a = cv2.resize(images[rand], (128,128), interpolation = cv2.INTER_AREA)
+# st.image(a)
+img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+if img_file_buffer is not None:
+    image = Image.open(img_file_buffer)
+    img_array = np.array(image)
 
-    if canvas_result.image_data is not None:
-        img = cv2.resize(canvas_result.image_data.astype('uint8'), (32, 32))
-        rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-#         st.image(rescaled)
-else:
-    img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
-    if img_file_buffer is not None:
-        image = Image.open(img_file_buffer)
-        img_array = np.array(image)
-        
+
 if st.button('Predict'):
     try:
-        test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        prediction = model_load.predict(fe_data(test_x).reshape(1, 32, 32))    
-        predictions = np.argmax(prediction, axis=1)
-#         st.bar_chart(prediction[0])
-        output_text = predictions[0]
-        font_size = "36px"
-        st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
-    except:
-        pass
-    try:
-        img_array = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
-        img_array = cv2.resize(img_array.astype('uint8'), (28, 28))
-        img_array.reshape(1, 28, 28)
-        predict = model_load.predict(img_array.reshape(1, 28, 28))    
-        predicts = np.argmax(predict, axis=1)
-#         st.bar_chart(val[0])
-#         st.write(predicts[0])
-        output_text = predicts[0]
-        font_size = "36px"
-        st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
+        img_array = cv2.resize(img_array.astype('uint8'), (32, 32))
+        img_array = np.expand_dims(img_array, axis=1)
+        img_array = img_array.transpose((1,0,2,3))
+        val = cifar10.predict(img_array)
+        st.write(f'result: {classes[np.argmax(val[0])]}')
+        st.bar_chart(val[0])
     except:
         pass
