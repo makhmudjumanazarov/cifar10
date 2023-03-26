@@ -54,13 +54,12 @@ else:
 if st.button('Predict'):
     try:
         test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#         prediction = model_load.predict(fe_data(test_x).reshape(1, 32, 32))    
-#         predictions = np.argmax(prediction, axis=1)
+        prediction = model_load.predict(fe_data(test_x).reshape(1, 32, 32))    
+        predictions = np.argmax(prediction, axis=1)
 #         st.bar_chart(prediction[0])
-#         output_text = predictions[0]
-        st.write(text_x.shape)
-#         font_size = "36px"
-#         st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
+        output_text = predictions[0]
+        font_size = "36px"
+        st.markdown("<h3 style='text-align: left; color: black; font-size: {};'>{}</h3>".format(font_size, output_text), unsafe_allow_html=True)
     except:
         pass
     try:
