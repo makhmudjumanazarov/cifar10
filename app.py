@@ -7,6 +7,7 @@ from PIL import Image
 from svgpathtools import parse_path
 from pathlib import Path
 from glob import glob
+from random import randint
 from tensorflow.keras.models import load_model
 
 def get_images(clas):
