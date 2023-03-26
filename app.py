@@ -10,20 +10,11 @@ from glob import glob
 from random import randint
 from tensorflow.keras.models import load_model
 
-def get_images(clas):
-    return [cv2.imread(i) for i in glob('images/'+clas+'*')]
 
 model_load = load_model('model')
 
 st.title('CIFAR10 Image Recognizer')
 labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
-clas = st.radio(
-"Choose class",
-labels, horizontal=True)
-images = get_images(clas)
-rand = randint(0, 9)
-a = cv2.resize(images[rand], (32,32), interpolation = cv2.INTER_AREA)
-st.image(a)
 
 
 img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
