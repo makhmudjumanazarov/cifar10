@@ -9,7 +9,7 @@ from pathlib import Path
 from glob import glob
 from tensorflow.keras.models import load_model
 
-def get_images(data, clas):
+def get_images(clas):
     return [cv2.imread(i) for i in glob('images/'+clas+'*')]
 
 model_load = load_model('model')
@@ -19,7 +19,7 @@ labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship
 clas = st.radio(
 "Choose class",
 labels, horizontal=True)
-images = get_images(option, clas)
+images = get_images(clas)
 rand = randint(0, 9)
 a = cv2.resize(images[rand], (128,128), interpolation = cv2.INTER_AREA)
 st.image(a)
