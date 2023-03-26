@@ -34,7 +34,7 @@ if st.button('Predict'):
         img_array = np.expand_dims(img_array, axis=1)
         img_array = img_array.transpose((1,0,2,3))
         val = model_load.predict(img_array)
-        st.write(f'result: {classes[np.argmax(val[0])]}')
+        st.write(f'result: {labels[np.argmax(val[0])]}')
 #         st.bar_chart(val[0])
     except:
         pass
