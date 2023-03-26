@@ -28,6 +28,6 @@ if st.button('Predict'):
 #         st.write(f'result: {labels[np.argmax(val[0])]}')
         output_text = labels[np.argmax(val[0])]
         font_size = "24px"
-        st.markdown("<h4 style='text-align: left; color: #A7BDBB; font-size: {};'>{}</h4>".format(font_size, output_text), unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: left; color: #2F3130; font-size: {};'>{}</h4>".format(font_size, output_text), unsafe_allow_html=True)
     except:
         pass
