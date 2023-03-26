@@ -9,21 +9,11 @@ from svgpathtools import parse_path
 from pathlib import Path
 from tensorflow.keras.models import load_model
 
-def fe_data(df):
-    df = df / 255.
-    return df
-
-def get_predictions_load(X_test):
-    # Digits prediction
-    predictions = model_load.predict(X_test)    
-    predictions = np.argmax(predictions, axis=1)
-    return predictions
-
 model_load = load_model('model')
 
 st.title('CIFAR10 Image Recognizer')
 labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
-st.header(":white[Sample images for classes]")
+# st.header(":white[Sample images for classes]")
 
 # clas = st.radio(
 # "Choose class",
@@ -43,8 +33,8 @@ if st.button('Predict'):
         img_array = cv2.resize(img_array.astype('uint8'), (32, 32))
         img_array = np.expand_dims(img_array, axis=1)
         img_array = img_array.transpose((1,0,2,3))
-        val = cifar10.predict(img_array)
+        val = model_load.predict(img_array)
         st.write(f'result: {classes[np.argmax(val[0])]}')
-        st.bar_chart(val[0])
+#         st.bar_chart(val[0])
     except:
         pass
