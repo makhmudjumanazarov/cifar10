@@ -3,17 +3,17 @@
   
 ## Steps
 <br />
-<b>Step 1.</b> Clone this repository: https://github.com/makhmudjumanazarov/MNIST.git via Terminal, cmd or PowerShell
+<b>Step 1.</b> Clone this repository: https://github.com/makhmudjumanazarov/cifar10.git via Terminal, cmd or PowerShell
 <br/><br/>
 <b>Step 2.</b> Create a new virtual environment 
 <pre>
-python -m venv mnist
+python -m venv cifar10
 </pre> 
 <br/>
 <b>Step 3.</b> Activate your virtual environment
 <pre>
-source mnist/bin/activate # Linux
-.\mnist\Scripts\activate # Windows 
+source cifar10/bin/activate # Linux
+.\cifar10\Scripts\activate # Windows 
 </pre>
 <br/>
 <b>Step 4.</b> Install dependencies and add virtual environment to the Python Kernel
@@ -21,7 +21,7 @@ source mnist/bin/activate # Linux
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 pip install ipykernel
-python -m ipykernel install --user --name=mnist
+python -m ipykernel install --user --name=cifar10
 </pre>
 <br/>
 <b>Step 5.</b> Model to Train and Evaluate
