@@ -22,7 +22,7 @@ clas = st.radio(
 labels, horizontal=True)
 images = get_images(clas)
 rand = randint(0, 9)
-a = cv2.resize(images[rand], (128,128), interpolation = cv2.INTER_AREA)
+a = cv2.resize(images[rand], (32,32), interpolation = cv2.INTER_AREA)
 st.image(a)
 
 
