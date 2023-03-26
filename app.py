@@ -15,14 +15,15 @@ def get_images(data, clas):
 model_load = load_model('model')
 
 st.title('CIFAR10 Image Recognizer')
+labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
 clas = st.radio(
 "Choose class",
-classes, horizontal=True)
+labels, horizontal=True)
 images = get_images(option, clas)
 rand = randint(0, 9)
 a = cv2.resize(images[rand], (128,128), interpolation = cv2.INTER_AREA)
 st.image(a)
-labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
+
 
 img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 if img_file_buffer is not None:
