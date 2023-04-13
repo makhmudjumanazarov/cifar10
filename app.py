@@ -12,7 +12,7 @@ from tensorflow.keras.models import load_model
 
 
 model_load = load_model('model')
-st.write(model_load.summary())
+# st.write(model_load.summary())
 
 st.title('CIFAR10 Image Recognizer')
 labels = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
